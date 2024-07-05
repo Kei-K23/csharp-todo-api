@@ -1,9 +1,9 @@
 # CSharp Todo API
 
-Todo CRUD API that build with C# .Net core WebAPI
+Todo CRUD API that build with C# ASP.Net core WebAPI
 
 ## Tech stack
 
 - C#
-- .Net core
+- ASP.Net core
 - SQL Server

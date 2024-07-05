@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TodoAPI.Contracts
 {
-    public class Contracts
+    public class CreateTodoRequest
     {
         [Required]
         [StringLength(100)]
