@@ -24,9 +24,18 @@ namespace TodoAPI.Middleware
             switch (exception)
             {
                 case BadHttpRequestException:
-                    errorResponse.Stat
-
+                    errorResponse.StatusCode = (int) HttpStatusCode.BadRequest;
+                    errorResponse.Title = exception.GetType().Name;
+                    break;
+                default:
+                    errorResponse.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    errorResponse.Title = "Internal Server Error";
+                    break;
             }
+
+            httpContext.Response.StatusCode = errorResponse.StatusCode;
+            await httpContext.Response.WriteAsJsonAsync(errorResponse, cancellationToken);
+            return true;
         }
     }
 }
