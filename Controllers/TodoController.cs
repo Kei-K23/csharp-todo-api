@@ -64,38 +64,7 @@ namespace TodoAPI.Controllers
 
     [HttpPut("{id:guid}")]
     public async Task UpdateTodoAsync(Guid id, UpdateTodoRequest updateTodoRequest) {
-        try
-        {
-        var todo = await _todoService.GetByIdAsync(id) ?? throw new Exception("Could not find todo to update");
-
-        if (updateTodoRequest.Title != null) {
-            todo.Title = updateTodoRequest.Title;
-        }
-
-        if (updateTodoRequest.Description != null) {
-            todo.Description = updateTodoRequest.Description;
-        }
-       
-        if (updateTodoRequest.IsComplete != null) {
-            todo.IsComplete = updateTodoRequest.IsComplete.Value;
-        }
-
-        if (updateTodoRequest.DueDate != null)
-         {
-             todo.DueDate = updateTodoRequest.DueDate.Value;
-         }
-
-        if (updateTodoRequest.Priority != null) {
-            todo.Priority = updateTodoRequest.Priority;
-        }
-        todo.UpdatedAt = DateTime.Now;
-        await _todoService.UpdateTodoAsync(id, updateTodoRequest);
-        }
-            catch (System.Exception)
-        {
-            
-            throw;
-        }
+        
     }
     }
 }
